@@ -7,7 +7,6 @@ project(grid_world_conversion)
 find_package(catkin REQUIRED COMPONENTS
   angles
   cmake_modules
-  roscpp
 )
 
 #find_package(PkgConfig REQUIRED)
@@ -33,7 +32,6 @@ catkin_package(
   LIBRARIES grid_world_conversion
   CATKIN_DEPENDS angles
     cmake_modules
-    roscpp
   DEPENDS Eigen
 )
 
@@ -47,6 +45,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIRS}
 )
 
 add_library(grid_world_conversion
