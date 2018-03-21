@@ -13,6 +13,8 @@ set(CMAKE_MODULE_PATH
     "${CMAKE_MODULE_PATH}"
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules")
 
+SET(BUILD_SHARED_LIBS ON)
+
 # Activate compiler warnings.
 SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -Wall -W")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -W")
