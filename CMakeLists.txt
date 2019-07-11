@@ -20,7 +20,7 @@ SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -Wall -W")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -W")
 
 find_package(angles)
-find_package(cmake_modules)
+#find_package(cmake_modules)
 
 #find_package(PkgConfig REQUIRED)
 #pkg_check_modules(SBPL REQUIRED sbpl)
@@ -28,7 +28,7 @@ find_package(cmake_modules)
 #link_directories(${SBPL_LIBRARY_DIRS})
 
 ## System dependencies are found with CMake's conventions
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 
 ####################################
@@ -41,10 +41,10 @@ find_package(Eigen REQUIRED)
 ### CATKIN_DEPENDS: catkin_packages dependent projects also need
 ### DEPENDS: system dependencies of this project that dependent projects also need
 #catkin_package(
-#  INCLUDE_DIRS include
+#  INCLUDE_DIRS include ${catkin_INCLUDE_DIRS}
 #  LIBRARIES grid_world_conversion
 #  CATKIN_DEPENDS angles
-#    cmake_modules
+##    cmake_modules
 #  DEPENDS Eigen
 #)
 
@@ -57,8 +57,8 @@ find_package(Eigen REQUIRED)
 # include_directories(include)
 include_directories(
   include
- # ${catkin_INCLUDE_DIRS}
-  ${EIGEN_INCLUDE_DIR}
+#  ${catkin_INCLUDE_DIRS}
+#  ${EIGEN_INCLUDE_DIR}
 )
 
 add_library(grid_world_conversion
@@ -66,10 +66,13 @@ add_library(grid_world_conversion
 )
 #add_dependencies(navigation_trajectory_planner navigation_trajectory_msgs_generate_messages_cpp)
 target_link_libraries(grid_world_conversion
-    ${catkin_LIBRARIES}
+  Eigen3::Eigen
+#  angles
+  )
+#    ${catkin_LIBRARIES}
 #    ${SBPL_LIBRARIES} 
 #    ${Boost_LIBRARIES}
-)
+#)
 
 INSTALL(TARGETS grid_world_conversion
   RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
