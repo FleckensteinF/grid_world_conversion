@@ -57,6 +57,7 @@ find_package(Eigen3 REQUIRED)
 # include_directories(include)
 include_directories(
   include
+  ${angles_INCLUDE_DIRS}
 #  ${catkin_INCLUDE_DIRS}
 #  ${EIGEN_INCLUDE_DIR}
 )
